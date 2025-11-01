@@ -156,63 +156,85 @@
             font-size: 0.85rem;
         }
 
-        .helper-links a {
-            color: var(--pantone-secondary);
-            font-weight: 600;
-            text-decoration: none;
+        .helper-links span {
+            color: var(--text-muted);
         }
 
-        .helper-links a:hover {
-            text-decoration: underline;
-        }
-
-        .login-visual {
-            position: relative;
-            background: url('https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=900&q=80') center/cover no-repeat;
+        .helper-card {
+            background: rgba(59, 200, 208, 0.1);
+            border: 1px solid rgba(26, 113, 117, 0.2);
+            border-radius: 18px;
+            padding: 1.35rem;
             display: flex;
-            align-items: flex-end;
-            justify-content: flex-end;
-            padding: 3rem;
+            flex-direction: column;
+            gap: 0.45rem;
         }
 
-        .login-visual::before {
+        .helper-card strong {
+            color: var(--pantone-secondary);
+            font-size: 0.95rem;
+            letter-spacing: 0.04rem;
+        }
+
+        .helper-card code {
+            background: rgba(26, 113, 117, 0.12);
+            border-radius: 8px;
+            padding: 0.25rem 0.55rem;
+            font-size: 0.9rem;
+        }
+
+        .visual-panel {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><defs><linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%233BC8D0" stop-opacity="0.2"/><stop offset="100%" stop-color="%2384C165" stop-opacity="0.45"/></linearGradient></defs><rect width="400" height="400" fill="url(%23grad)"/><circle cx="120" cy="140" r="46" fill="rgba(255,255,255,0.35)"/><circle cx="260" cy="220" r="62" fill="rgba(255,255,255,0.2)"/><circle cx="180" cy="300" r="38" fill="rgba(255,255,255,0.18)"/></svg>') center/cover no-repeat;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3rem 3.25rem 2.5rem;
+            position: relative;
+        }
+
+        .visual-panel::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(59, 200, 208, 0.35), rgba(16, 36, 42, 0.85));
+            background: linear-gradient(145deg, rgba(16, 36, 42, 0.72), rgba(26, 113, 117, 0.55));
+            z-index: 0;
         }
 
-        .login-visual-content {
+        .visual-panel-content {
             position: relative;
-            color: #fff;
-            max-width: 360px;
+            z-index: 1;
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
         }
 
-        .login-visual h2 {
-            font-size: 1.9rem;
-            font-weight: 700;
-            letter-spacing: 0.05rem;
+         .visual-panel h2 {
+            font-size: 2.15rem;
+            line-height: 1.25;
         }
 
-        .login-visual p {
-            color: rgba(255, 255, 255, 0.8);
+        .visual-panel p {
+            font-size: 1rem;
+            max-width: 360px;
             line-height: 1.6;
         }
 
-        .status-strip {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(16, 36, 42, 0.75);
-            color: #fff;
-            font-size: 0.75rem;
-            letter-spacing: 0.2rem;
-            padding: 0.75rem 1.5rem;
-            text-transform: uppercase;
+        .visual-panel footer {
+            position: relative;
+            z-index: 1;
+            font-size: 0.9rem;
+            opacity: 0.75;
+        }
+
+        .error-message {
+            background: rgba(205, 42, 75, 0.1);
+            border: 1px solid rgba(205, 42, 75, 0.3);
+            border-radius: 12px;
+            color: #a32036;
+            font-size: 0.9rem;
+            padding: 0.75rem 1rem;
+            display: none;
         }
 
         @media (max-width: 960px) {
@@ -220,99 +242,105 @@
                 grid-template-columns: 1fr;
             }
 
-            .login-panel {
-                padding: 2.75rem 2.25rem;
-            }
-
-            .login-visual {
-                min-height: 320px;
-                justify-content: center;
-                align-items: flex-end;
+            .visual-panel {
+                display: none;
             }
         }
 
-        @media (max-width: 640px) {
-            body {
-                padding: 1rem;
-            }
-
-            .login-shell {
-                border-radius: 24px;
-            }
-
-            .actions {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 1.25rem;
-            }
-
-            .btn-primary {
-                width: 100%;
+        @media (max-width: 540px) {
+            .login-panel {
+                padding: 2.5rem 2rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="login-shell">
-        <section class="login-panel" aria-label="Painel de autenticação">
-            <div class="brand" aria-label="Logotipo BiovetFarma">
-                <svg viewBox="0 0 110 110" role="img" aria-labelledby="logoTitle logoDesc">
-                    <title id="logoTitle">BiovetFarma</title>
-                    <desc id="logoDesc">Logotipo estilizado da BiovetFarma com ícones de gato e cachorro</desc>
-                    <defs>
-                        <linearGradient id="cross" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#3BC8D0" />
-                            <stop offset="100%" stop-color="#1A7175" />
-                        </linearGradient>
-                        <linearGradient id="pet" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#9FD8B3" />
-                            <stop offset="100%" stop-color="#84C165" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M46 8h18c3.3 0 6 2.7 6 6v20h20c3.3 0 6 2.7 6 6v18c0 3.3-2.7 6-6 6H70v20c0 3.3-2.7 6-6 6H46c-3.3 0-6-2.7-6-6V64H20c-3.3 0-6-2.7-6-6V40c0-3.3 2.7-6 6-6h20V14c0-3.3 2.7-6 6-6Z" fill="url(#cross)" />
-                    <path d="M46 38h18c3.3 0 6 2.7 6 6v16c0 8.8-7.2 16-16 16h-4c-8.8 0-16-7.2-16-16V44c0-3.3 2.7-6 6-6Z" fill="url(#pet)" />
-                    <path d="M58 28c4 0 7 3 7 7v6H45v-6c0-4 3-7 7-7h6Z" fill="#0D0F10" opacity="0.14" />
-                    <path d="M52.5 50c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5S45 61.6 45 57.5 48.4 50 52.5 50Zm-2.2 4.5c-.8 0-1.3.5-1.3 1.3 0 .7.5 1.2 1.3 1.2.7 0 1.2-.5 1.2-1.2 0-.8-.5-1.3-1.2-1.3Zm5 0c-.8 0-1.3.5-1.3 1.3 0 .7.5 1.2 1.3 1.2.7 0 1.2-.5 1.2-1.2 0-.8-.5-1.3-1.2-1.3Zm-2.8 6.4c1.5 0 3-.6 4.2-1.7.4-.4.4-1 0-1.4-.4-.4-1-.4-1.4 0-.8.8-1.8 1.1-2.8 1.1s-2-.3-2.8-1.1c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4 1.2 1.1 2.7 1.7 4.2 1.7Z" fill="#0D0F10" opacity="0.3" />
+        <div class="login-panel">
+            <div class="brand">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <circle cx="60" cy="60" r="58" fill="#CFF5B9" opacity="0.5" />
+                    <path d="M82.4 41.2c-5.9-12-19.7-17-31.7-11.1-12 5.9-17 19.7-11.1 31.7 1.7 3.5 4.1 6.5 7 8.8l-12 27.3 11.6 5.1 10.4-23.6c12.9 1.7 25.2-5.1 30.3-17.3 3.5-8.1 3.1-17.2-0.7-25.9z" fill="#1A7175" />
+                    <path d="M78.1 77.6c-9 4.4-20 0.6-24.4-8.4-4.4-9-0.6-20 8.4-24.4 9-4.4 20-0.6 24.4 8.4 4.4 9 0.6 20-8.4 24.4z" fill="#3BC8D0" />
                 </svg>
                 <div class="brand-title">
                     <span>BiovetFarma</span>
-                    <span>Portal de Gestão</span>
+                    <span>Portal de Acesso</span>
                 </div>
             </div>
 
             <div>
                 <h1>Bem-vindo de volta</h1>
-                <p>Centralize a manipulação farmacêutica, os atendimentos e o acompanhamento clínico em um só lugar seguro.</p>
+                <p>Insira suas credenciais corporativas para acessar o ambiente operacional da farmácia de manipulação.</p>
             </div>
 
-            <form>
+            <div class="error-message" id="errorMessage">Usuário ou senha inválidos. Verifique os dados e tente novamente.</div>
+
+            <form id="loginForm" autocomplete="off">
                 <label>
                     Usuário
-                    <input type="text" name="usuario" placeholder="e-mail ou código interno" autocomplete="username">
+                    <input type="text" name="usuario" placeholder="Informe o usuário" required autofocus>
                 </label>
                 <label>
                     Senha
-                    <input type="password" name="senha" placeholder="Digite sua senha" autocomplete="current-password">
+                    <input type="password" name="senha" placeholder="Informe a senha" required>
                 </label>
                 <div class="actions">
-                    <div class="helper-links">
-                        <a href="#">Esqueci minha senha</a>
-                        <a href="#">Solicitar acesso</a>
-                    </div>
-                    <button type="submit" class="btn-primary">Conectar</button>
+                    <button class="btn-primary" type="submit">Conectar</button>
                 </div>
             </form>
-        </section>
 
-        <aside class="login-visual" aria-label="Mensagem institucional">
-            <div class="login-visual-content">
-                <h2>Manipulação e atendimento sincronizados</h2>
-                <p>
-                    Garanta que cada fórmula personalizada chegue ao paciente certo no tempo ideal. Monitore os pedidos, acompanhe o status das manipulações e mantenha a equipe informada.
-                </p>
+            <div class="helper-links">
+                <span>Precisa de ajuda? Entre em contato com o suporte interno.</span>
+                <div class="helper-card">
+                    <strong>Credenciais padrão</strong>
+                    <span>Usuário: <code>01</code></span>
+                    <span>Senha: <code>123456</code></span>
+                    <span>Nome: <code>Roberto</code></span>
+                </div>
             </div>
-            <div class="status-strip">Pressione ESC para fechar · Ambiente seguro</div>
+        </div>
+        <aside class="visual-panel">
+            <div class="visual-panel-content">
+                <h2>Farmácia de manipulação com atendimento integrado</h2>
+                <p>Controle cadastros, pedidos, relatórios e configurações em um único ambiente. Acompanhe o atendimento desde o primeiro contato até a entrega.</p>
+            </div>
+            <footer>© BiovetFarma 2024</footer>
         </aside>
     </div>
+
+    <script>
+        (function () {
+            const form = document.getElementById('loginForm');
+            const errorMessage = document.getElementById('errorMessage');
+            const validUser = { login: '01', password: '123456', displayName: 'Roberto' };
+
+            const activeSession = JSON.parse(localStorage.getItem('biovetSession') || 'null');
+            if (activeSession && activeSession.authenticated) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const data = new FormData(form);
+                const usuario = (data.get('usuario') || '').trim();
+                const senha = (data.get('senha') || '').trim();
+
+                if (usuario === validUser.login && senha === validUser.password) {
+                    localStorage.setItem('biovetSession', JSON.stringify({
+                        authenticated: true,
+                        login: validUser.login,
+                        displayName: validUser.displayName,
+                        authenticatedAt: Date.now()
+                    }));
+                    errorMessage.style.display = 'none';
+                    window.location.href = 'index.html';
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
