@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiovetFarma | Área do Colaborador</title>
+    <style>
+        :root {
+            --pantone-primary: #3BC8D0;
+            --pantone-secondary: #1A7175;
+            --pantone-accent: #9FD8B3;
+            --pantone-light: #CFF5B9;
+            --pantone-highlight: #84C165;
+            --pantone-warm: #FEEED3;
+            --pantone-dark: #0D0F10;
+            --text-dark: #2B2B2B;
+            --text-muted: #5F6A6A;
+            --desktop-gradient: linear-gradient(145deg, rgba(59, 200, 208, 0.18), rgba(159, 216, 179, 0.18));
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--desktop-gradient);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ---------- Desktop / Workspace ---------- */
+        .desktop-shell {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 3.5rem 5vw;
+        }
+
+        .desktop-top {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            align-items: center;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .brand img {
+            width: 60px;
+            height: auto;
+            display: block;
+        }
+
+        .brand-title {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .brand-title span:first-child {
+            color: var(--pantone-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 0.24rem;
+        }
+
+        .brand-title span:last-child {
+            color: var(--pantone-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .desktop-user {
+            background: rgba(59, 200, 208, 0.1);
+            border: 1px solid rgba(26, 113, 117, 0.16);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            padding: 1.1rem 1.6rem;
+        }
+
+        .desktop-user strong {
+            color: var(--pantone-secondary);
+            font-size: 0.85rem;
+            letter-spacing: 0.08rem;
+        }
+
+        .desktop-user span {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .desktop-grid {
+            display: grid;
+            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            margin-top: 4rem;
+        }
+
+        .desktop-icon {
+            align-items: center;
+            background: transparent;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .desktop-icon:focus-visible {
+            outline: 3px solid rgba(59, 200, 208, 0.45);
+            outline-offset: 6px;
+        }
+
+        .desktop-icon:hover {
+            transform: translateY(-6px);
+            filter: brightness(1.05);
+        }
+
+        .desktop-icon .icon-plate {
+            align-items: center;
+            background: linear-gradient(145deg, rgba(26, 113, 117, 0.9), rgba(132, 193, 101, 0.85));
+            border-radius: 28px;
+            box-shadow: 0 20px 40px -26px rgba(26, 113, 117, 0.75);
+            display: flex;
+            height: 120px;
+            justify-content: center;
+            width: 120px;
+        }
+
+        .desktop-icon .icon-plate svg {
+            width: 58px;
+            height: 58px;
+            fill: #fff;
+        }
+
+        .desktop-icon span {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 0.04rem;
+            text-transform: uppercase;
+        }
+
+        .desktop-footer {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+        }
+
+        .desktop-footer small {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.08rem;
+        }
+
+        .desktop-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .desktop-actions button {
+            align-items: center;
+            background: rgba(26, 113, 117, 0.12);
+            border: 1px solid rgba(26, 113, 117, 0.24);
+            border-radius: 999px;
+            color: var(--pantone-secondary);
+            cursor: pointer;
+            display: inline-flex;
+            font-size: 0.9rem;
+            font-weight: 600;
+            gap: 0.5rem;
+            letter-spacing: 0.04rem;
+            padding: 0.6rem 1.4rem;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .desktop-actions button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 26px -22px rgba(26, 113, 117, 0.6);
+        }
+
+        /* ---------- Atendimento App ---------- */
+        .app-shell {
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid rgba(26, 113, 117, 0.12);
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            padding: 1.25rem 2.75rem 0.75rem;
+            position: relative;
+            z-index: 30;
+        }
+
+        .header-top {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .session-actions {
+            align-items: center;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .session-status {
+            background: rgba(59, 200, 208, 0.12);
+            border: 1px solid rgba(26, 113, 117, 0.15);
+            border-radius: 999px;
+            color: var(--pantone-secondary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.05rem;
+            padding: 0.45rem 1rem;
+            text-transform: uppercase;
+        }
+
+        .session-actions button {
+            align-items: center;
+            background: rgba(26, 113, 117, 0.1);
+            border: 1px solid rgba(26, 113, 117, 0.24);
+            border-radius: 12px;
+            color: var(--pantone-secondary);
+            cursor: pointer;
+            display: inline-flex;
+            font-size: 0.82rem;
+            font-weight: 600;
+            gap: 0.45rem;
+            letter-spacing: 0.04rem;
+            padding: 0.55rem 0.95rem;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .session-actions button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 28px -20px rgba(26, 113, 117, 0.55);
+        }
+
+        .menu-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .menu-group {
+            position: relative;
+            z-index: 40;
+        }
+
+        .menu-trigger {
+            align-items: center;
+            background: linear-gradient(135deg, rgba(59, 200, 208, 0.12), rgba(207, 245, 185, 0.32));
+            border: 1px solid rgba(26, 113, 117, 0.18);
+            border-radius: 12px;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: inline-flex;
+            font-size: 0.92rem;
+            font-weight: 700;
+            gap: 0.5rem;
+            letter-spacing: 0.04rem;
+            padding: 0.65rem 1.1rem;
+            position: relative;
+            text-transform: uppercase;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+        }
+
+        .menu-trigger::after {
+            border: 0.35rem solid transparent;
+            border-top-color: currentColor;
+            content: "";
+            margin-left: 0.15rem;
+        }
+
+        .menu-group:hover .menu-trigger,
+        .menu-group:focus-within .menu-trigger {
+            border-color: rgba(26, 113, 117, 0.35);
+            box-shadow: 0 10px 18px -14px rgba(26, 113, 117, 0.55);
+            color: var(--pantone-secondary);
+        }
+
+        .menu-dropdown {
+            background: #fff;
+            border: 1px solid rgba(26, 113, 117, 0.15);
+            border-radius: 14px;
+            box-shadow: 0 16px 32px -18px rgba(15, 30, 30, 0.35);
+            display: none;
+            list-style: none;
+            margin-top: 0.35rem;
+            min-width: 220px;
+            padding: 0.55rem 0;
+            position: absolute;
+            z-index: 50;
+        }
+
+        .menu-group:hover .menu-dropdown,
+        .menu-group:focus-within .menu-dropdown {
+            display: block;
+        }
+
+        .menu-dropdown li {
+            display: block;
+        }
+
+        .menu-dropdown a {
+            align-items: center;
+            color: var(--text-muted);
+            display: flex;
+            font-size: 0.88rem;
+            gap: 0.6rem;
+            padding: 0.55rem 1rem;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .menu-dropdown a span.icon {
+            align-items: center;
+            background: rgba(59, 200, 208, 0.12);
+            border-radius: 50%;
+            color: var(--pantone-secondary);
+            display: inline-flex;
+            font-size: 0.78rem;
+            height: 26px;
+            justify-content: center;
+            width: 26px;
+        }
+
+        .menu-dropdown a:hover {
+            background: linear-gradient(135deg, rgba(59, 200, 208, 0.12), rgba(207, 245, 185, 0.24));
+            color: var(--pantone-secondary);
+            padding-left: 1.2rem;
+        }
+
+        main {
+            align-items: center;
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            padding: 3rem 2rem 4rem;
+        }
+
+        .biosys-stage {
+            align-items: center;
+            background: linear-gradient(145deg, rgba(59, 200, 208, 0.08), rgba(132, 193, 101, 0.12));
+            border: 1px solid rgba(26, 113, 117, 0.1);
+            border-radius: 28px;
+            box-shadow: 0 18px 48px -32px rgba(15, 30, 30, 0.45);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 4rem 3.5rem;
+            text-align: center;
+        }
+
+        .biosys-stage img {
+            width: 132px;
+            height: auto;
+        }
+
+        .biosys-stage h1 {
+            color: var(--pantone-secondary);
+            font-size: 2.05rem;
+            letter-spacing: 0.12rem;
+            text-transform: uppercase;
+        }
+
+        .biosys-stage p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 420px;
+        }
+
+        /* ---------- Responsivo ---------- */
+        @media (max-width: 1024px) {
+            .desktop-shell {
+                padding: 2.5rem 2.5rem 2rem;
+            }
+
+            main {
+                padding: 2.5rem 1.75rem 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .desktop-grid {
+                margin-top: 2.5rem;
+            }
+
+            header {
+                padding: 1.15rem 1.75rem 0.75rem;
+            }
+
+            main {
+                padding-bottom: 2.5rem;
+            }
+
+            .session-actions {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .desktop-shell {
+                padding: 2rem 1.5rem;
+            }
+
+            .desktop-grid {
+                grid-template-columns: repeat(2, minmax(120px, 1fr));
+            }
+
+            header {
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop-shell" id="desktopShell">
+        <div class="desktop-top">
+            <div class="brand">
+                <img src="assets/biovetfarma-logo.svg" alt="BiovetFarma" />
+                <div class="brand-title">
+                    <span>BiovetFarma</span>
+                    <span>Área Operacional</span>
+                </div>
+            </div>
+            <div class="desktop-user">
+                <strong>COLABORADOR ATIVO</strong>
+                <span data-user-name>—</span>
+                <small>ID: <span data-user-code>—</span></small>
+            </div>
+        </div>
+
+        <div class="desktop-grid">
+            <button class="desktop-icon" type="button" data-launch="atendimentoApp">
+                <div class="icon-plate">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 16h40a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V20a4 4 0 0 1 4-4zm0-6a6 6 0 0 0-6 6v32a6 6 0 0 0 6 6h40a6 6 0 0 0 6-6V16a6 6 0 0 0-6-6H12z" />
+                        <path d="M20 24h24v4H20zM20 34h24v4H20zM20 44h18v4H20z" />
+                    </svg>
+                </div>
+                <span>BioSys</span>
+            </button>
+            <button class="desktop-icon" type="button">
+                <div class="icon-plate">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 12h40v40H12z" opacity="0.35" />
+                        <path d="M18 18h12v12H18zM34 18h12v12H34zM18 34h12v12H18zM34 34h12v12H34z" />
+                    </svg>
+                </div>
+                <span>BIOCLOCK</span>
+            </button>
+            <button class="desktop-icon" type="button">
+                <div class="icon-plate">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 16h40v32H12z" opacity="0.35" />
+                        <path d="M20 26h24v4H20zM20 34h16v4H20zM20 42h12v4H20z" />
+                        <path d="M18 12h4v8h-4zM42 12h4v8h-4z" />
+                    </svg>
+                </div>
+                <span>BIONEX</span>
+            </button>
+            <button class="desktop-icon" type="button">
+                <div class="icon-plate">
+                    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M32 12a20 20 0 1 0 0 40 20 20 0 0 0 0-40zm0 6a14 14 0 1 1 0 28 14 14 0 0 1 0-28z" />
+                        <path d="M30 20h4v12h-4zM30 34h8v4h-8z" />
+                    </svg>
+                </div>
+                <span>BIOSAÚDE</span>
+            </button>
+        </div>
+
+        <div class="desktop-footer">
+            <small>Sessão ativa • Unidade Matriz</small>
+            <div class="desktop-actions">
+                <button type="button" data-action="logout">Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-shell hidden" id="atendimentoApp">
+        <header>
+            <div class="header-top">
+                <div class="brand">
+                    <img src="assets/biovetfarma-logo.svg" alt="BiovetFarma" />
+                    <div class="brand-title">
+                        <span>BiovetFarma</span>
+                        <span>BioSys</span>
+                    </div>
+                </div>
+                <div class="session-actions">
+                    <span class="session-status">Usuário • <span data-user-name>—</span></span>
+                    <button type="button" id="returnDesktop">⟵ Desktop</button>
+                    <button type="button" data-action="logout">Sair</button>
+                </div>
+            </div>
+            <nav class="menu-bar">
+                <div class="menu-group">
+                    <button class="menu-trigger" type="button">BIOCLOCK</button>
+                    <ul class="menu-dropdown">
+                        <li><a href="#"><span class="icon">PF</span>Clientes (PF)</a></li>
+                        <li><a href="#"><span class="icon">PJ</span>Clientes (PJ)</a></li>
+                        <li><a href="#"><span class="icon">AN</span>Animais</a></li>
+                        <li><a href="#"><span class="icon">PR</span>Produtos</a></li>
+                        <li><a href="#"><span class="icon">FO</span>Fornecedores</a></li>
+                    </ul>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-trigger" type="button">Movimento</button>
+                    <ul class="menu-dropdown">
+                        <li><a href="#"><span class="icon">AT</span>Atendimentos</a></li>
+                        <li><a href="#"><span class="icon">PV</span>Pedidos de Venda</a></li>
+                        <li><a href="#"><span class="icon">CR</span>Contas a Receber</a></li>
+                        <li><a href="#"><span class="icon">CP</span>Contas a Pagar</a></li>
+                    </ul>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-trigger" type="button">BIONEX</button>
+                    <ul class="menu-dropdown">
+                        <li><a href="#"><span class="icon">AT</span>Resumo de Atendimentos</a></li>
+                        <li><a href="#"><span class="icon">FI</span>Financeiro</a></li>
+                        <li><a href="#"><span class="icon">EQ</span>Estoque</a></li>
+                    </ul>
+                </div>
+                <div class="menu-group">
+                    <button class="menu-trigger" type="button">BIOSAÚDE</button>
+                    <ul class="menu-dropdown">
+                        <li><a href="#"><span class="icon">US</span>Usuários</a></li>
+                        <li><a href="#"><span class="icon">PR</span>Perfis de Acesso</a></li>
+                        <li><a href="#"><span class="icon">PA</span>Parâmetros</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="biosys-stage">
+                <img src="assets/biovetfarma-logo.svg" alt="BioSys" />
+                <h1>BioSys</h1>
+                <p>Selecione um módulo ou utilize o menu superior para navegar pelo ecossistema da BiovetFarma.</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        (function () {
+            const session = JSON.parse(localStorage.getItem('biovetSession') || 'null');
+            if (!session || !session.authenticated) {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            const userNameNodes = document.querySelectorAll('[data-user-name]');
+            const userCodeNodes = document.querySelectorAll('[data-user-code]');
+            userNameNodes.forEach(node => node.textContent = session.displayName || session.login || 'Usuário');
+            userCodeNodes.forEach(node => node.textContent = session.login || '00');
+
+            const desktopShell = document.getElementById('desktopShell');
+            const atendimentoApp = document.getElementById('atendimentoApp');
+            const launchButtons = document.querySelectorAll('[data-launch="atendimentoApp"]');
+            const returnDesktop = document.getElementById('returnDesktop');
+            const logoutButtons = document.querySelectorAll('[data-action="logout"]');
+
+            launchButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    desktopShell.classList.add('hidden');
+                    atendimentoApp.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            if (returnDesktop) {
+                returnDesktop.addEventListener('click', () => {
+                    atendimentoApp.classList.add('hidden');
+                    desktopShell.classList.remove('hidden');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            logoutButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    localStorage.removeItem('biovetSession');
+                    window.location.href = 'login.html';
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
