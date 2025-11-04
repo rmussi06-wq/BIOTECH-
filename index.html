@@ -57,9 +57,10 @@
             gap: 1rem;
         }
 
-        .brand svg {
+        .brand img {
             width: 60px;
             height: auto;
+            display: block;
         }
 
         .brand-title {
@@ -358,170 +359,43 @@
         }
 
         main {
-            display: grid;
-            flex: 1;
-            grid-template-columns: minmax(320px, 380px) 1fr;
-            overflow: hidden;
-        }
-
-        aside {
-            background: #fff;
-            border-right: 1px solid rgba(26, 113, 117, 0.08);
+            align-items: center;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 2.5rem 2.75rem;
-            position: relative;
-            z-index: 1;
+            flex: 1;
+            justify-content: center;
+            padding: 3rem 2rem 4rem;
         }
 
-        .form-header {
+        .biosys-stage {
+            align-items: center;
+            background: linear-gradient(145deg, rgba(59, 200, 208, 0.08), rgba(132, 193, 101, 0.12));
+            border: 1px solid rgba(26, 113, 117, 0.1);
+            border-radius: 28px;
+            box-shadow: 0 18px 48px -32px rgba(15, 30, 30, 0.45);
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            padding: 4rem 3.5rem;
+            text-align: center;
         }
 
-        .form-header h1 {
-            font-size: 1.55rem;
-            font-weight: 700;
+        .biosys-stage img {
+            width: 132px;
+            height: auto;
         }
 
-        .form-header p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        label {
-            color: var(--text-muted);
-            display: flex;
-            flex-direction: column;
-            font-size: 0.85rem;
-            font-weight: 600;
-            gap: 0.45rem;
+        .biosys-stage h1 {
+            color: var(--pantone-secondary);
+            font-size: 2.05rem;
+            letter-spacing: 0.12rem;
             text-transform: uppercase;
-            letter-spacing: 0.05rem;
         }
 
-        input,
-        select,
-        textarea {
-            background: linear-gradient(135deg, rgba(207, 245, 185, 0.32), rgba(59, 200, 208, 0.1));
-            border: 1px solid rgba(26, 113, 117, 0.2);
-            border-radius: 12px;
-            color: var(--text-dark);
-            font-size: 1rem;
-            padding: 0.85rem 1rem;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--pantone-secondary);
-            box-shadow: 0 0 0 3px rgba(59, 200, 208, 0.2);
-            outline: none;
-        }
-
-        textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .actions {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-        }
-
-        button {
-            border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 700;
-            letter-spacing: 0.03rem;
-            padding: 0.9rem 1.5rem;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--pantone-primary), var(--pantone-secondary));
-            color: #fff;
-            box-shadow: 0 12px 22px -12px rgba(26, 113, 117, 0.4);
-        }
-
-        .btn-secondary {
-            background: #fff;
-            border: 1px solid rgba(26, 113, 117, 0.3);
-            color: var(--pantone-secondary);
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 28px -18px rgba(26, 113, 117, 0.45);
-        }
-
-        section.content {
-            background: rgba(255, 255, 255, 0.92);
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            padding: 2.75rem 3rem 3.5rem;
-            position: relative;
-        }
-
-        .quick-actions {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        }
-
-        .quick-card {
-            background: linear-gradient(135deg, rgba(59, 200, 208, 0.12), rgba(159, 216, 179, 0.18));
-            border: 1px solid rgba(26, 113, 117, 0.12);
-            border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            padding: 1.5rem;
-        }
-
-        .quick-card strong {
-            color: var(--pantone-secondary);
-            font-size: 1rem;
-        }
-
-        .quick-card span {
+        .biosys-stage p {
             color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        .workspace-preview {
-            background: #fff;
-            border: 1px dashed rgba(26, 113, 117, 0.2);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.65rem;
-            padding: 2rem;
-        }
-
-        .workspace-preview h2 {
-            color: var(--pantone-secondary);
-            font-size: 1.25rem;
-        }
-
-        .workspace-preview p {
-            color: var(--text-muted);
+            font-size: 1rem;
             line-height: 1.6;
+            max-width: 420px;
         }
 
         /* ---------- Responsivo ---------- */
@@ -531,12 +405,7 @@
             }
 
             main {
-                grid-template-columns: 1fr;
-            }
-
-            aside {
-                border-right: none;
-                border-bottom: 1px solid rgba(26, 113, 117, 0.08);
+                padding: 2.5rem 1.75rem 3rem;
             }
         }
 
@@ -579,14 +448,10 @@
     </style>
 </head>
 <body>
-  <div class="desktop-shell" id="desktopShell">
+    <div class="desktop-shell" id="desktopShell">
         <div class="desktop-top">
             <div class="brand">
-                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <circle cx="60" cy="60" r="58" fill="#CFF5B9" opacity="0.5" />
-                    <path d="M82.4 41.2c-5.9-12-19.7-17-31.7-11.1-12 5.9-17 19.7-11.1 31.7 1.7 3.5 4.1 6.5 7 8.8l-12 27.3 11.6 5.1 10.4-23.6c12.9 1.7 25.2-5.1 30.3-17.3 3.5-8.1 3.1-17.2-0.7-25.9z" fill="#1A7175" />
-                    <path d="M78.1 77.6c-9 4.4-20 0.6-24.4-8.4-4.4-9-0.6-20 8.4-24.4 9-4.4 20-0.6 24.4 8.4 4.4 9 0.6 20-8.4 24.4z" fill="#3BC8D0" />
-                </svg>
+                <img src="assets/biovetfarma-logo.svg" alt="BiovetFarma" />
                 <div class="brand-title">
                     <span>BiovetFarma</span>
                     <span>Área Operacional</span>
@@ -607,7 +472,7 @@
                         <path d="M20 24h24v4H20zM20 34h24v4H20zM20 44h18v4H20z" />
                     </svg>
                 </div>
-                <span>Atendimento</span>
+                <span>BioSys</span>
             </button>
             <button class="desktop-icon" type="button">
                 <div class="icon-plate">
@@ -616,7 +481,7 @@
                         <path d="M18 18h12v12H18zM34 18h12v12H34zM18 34h12v12H18zM34 34h12v12H34z" />
                     </svg>
                 </div>
-                <span>Cadastros</span>
+                <span>BIOCLOCK</span>
             </button>
             <button class="desktop-icon" type="button">
                 <div class="icon-plate">
@@ -626,7 +491,7 @@
                         <path d="M18 12h4v8h-4zM42 12h4v8h-4z" />
                     </svg>
                 </div>
-                <span>Relatórios</span>
+                <span>BIONEX</span>
             </button>
             <button class="desktop-icon" type="button">
                 <div class="icon-plate">
@@ -635,7 +500,7 @@
                         <path d="M30 20h4v12h-4zM30 34h8v4h-8z" />
                     </svg>
                 </div>
-                <span>Configurações</span>
+                <span>BIOSAÚDE</span>
             </button>
         </div>
 
@@ -651,14 +516,10 @@
         <header>
             <div class="header-top">
                 <div class="brand">
-                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <circle cx="60" cy="60" r="58" fill="#CFF5B9" opacity="0.5" />
-                        <path d="M82.4 41.2c-5.9-12-19.7-17-31.7-11.1-12 5.9-17 19.7-11.1 31.7 1.7 3.5 4.1 6.5 7 8.8l-12 27.3 11.6 5.1 10.4-23.6c12.9 1.7 25.2-5.1 30.3-17.3 3.5-8.1 3.1-17.2-0.7-25.9z" fill="#1A7175" />
-                        <path d="M78.1 77.6c-9 4.4-20 0.6-24.4-8.4-4.4-9-0.6-20 8.4-24.4 9-4.4 20-0.6 24.4 8.4 4.4 9 0.6 20-8.4 24.4z" fill="#3BC8D0" />
-                    </svg>
+                    <img src="assets/biovetfarma-logo.svg" alt="BiovetFarma" />
                     <div class="brand-title">
                         <span>BiovetFarma</span>
-                        <span>Atendimento Clínica</span>
+                        <span>BioSys</span>
                     </div>
                 </div>
                 <div class="session-actions">
@@ -669,7 +530,7 @@
             </div>
             <nav class="menu-bar">
                 <div class="menu-group">
-                    <button class="menu-trigger" type="button">Cadastros</button>
+                    <button class="menu-trigger" type="button">BIOCLOCK</button>
                     <ul class="menu-dropdown">
                         <li><a href="#"><span class="icon">PF</span>Clientes (PF)</a></li>
                         <li><a href="#"><span class="icon">PJ</span>Clientes (PJ)</a></li>
@@ -688,7 +549,7 @@
                     </ul>
                 </div>
                 <div class="menu-group">
-                    <button class="menu-trigger" type="button">Relatórios</button>
+                    <button class="menu-trigger" type="button">BIONEX</button>
                     <ul class="menu-dropdown">
                         <li><a href="#"><span class="icon">AT</span>Resumo de Atendimentos</a></li>
                         <li><a href="#"><span class="icon">FI</span>Financeiro</a></li>
@@ -696,7 +557,7 @@
                     </ul>
                 </div>
                 <div class="menu-group">
-                    <button class="menu-trigger" type="button">Configurações</button>
+                    <button class="menu-trigger" type="button">BIOSAÚDE</button>
                     <ul class="menu-dropdown">
                         <li><a href="#"><span class="icon">US</span>Usuários</a></li>
                         <li><a href="#"><span class="icon">PR</span>Perfis de Acesso</a></li>
@@ -706,74 +567,11 @@
             </nav>
         </header>
         <main>
-            <aside>
-                <div class="form-header">
-                    <h1>Registrar Atendimento</h1>
-                    <p>Preencha os dados principais do atendimento para a farmácia de manipulação. Campos marcados com * são obrigatórios.</p>
-                    <div class="quick-actions">
-                        <div class="quick-card">
-                            <strong>Atalhos rápidos</strong>
-                            <span>Ctrl + N • Novo atendimento</span>
-                            <span>Ctrl + S • Salvar andamento</span>
-                        </div>
-                        <div class="quick-card">
-                            <strong>Indicadores</strong>
-                            <span>Fila de produção: 12 pedidos</span>
-                            <span>Entrega prevista: 18h</span>
-                        </div>
-                    </div>
-                </div>
-                <form>
-                    <label>
-                        Cliente *
-                        <input type="text" placeholder="Selecione ou cadastre o cliente" required>
-                    </label>
-                    <label>
-                        Animal/Paciente
-                        <input type="text" placeholder="Nome do animal/paciente">
-                    </label>
-                    <label>
-                        Produto manipulado *
-                        <input type="text" placeholder="Fórmula ou produto principal" required>
-                    </label>
-                    <label>
-                        Médico Veterinário
-                        <input type="text" placeholder="Responsável técnico">
-                    </label>
-                    <label>
-                        Observações
-                        <textarea placeholder="Adicione instruções, alergias ou solicitações especiais"></textarea>
-                    </label>
-                    <div class="actions">
-                        <button class="btn-primary" type="submit">Registrar</button>
-                        <button class="btn-secondary" type="reset">Cancelar</button>
-                    </div>
-                </form>
-            </aside>
-            <section class="content">
-                <div class="workspace-preview">
-                    <h2>Painel de Atendimento</h2>
-                    <p>Acompanhe os atendimentos em tempo real e visualize o status de produção, entrega e faturamento de cada manipulado.</p>
-                    <p>Utilize os filtros de busca para encontrar atendimentos por cliente, animal ou responsável técnico.</p>
-                </div>
-                <div class="quick-actions">
-                    <div class="quick-card">
-                        <strong>Próximas ações</strong>
-                        <span>Separar insumos - Pedido #2048</span>
-                        <span>Confirmar entrega - Pedido #2039</span>
-                    </div>
-                    <div class="quick-card">
-                        <strong>Alertas</strong>
-                        <span>Verificar validade de lote - Lote 9321</span>
-                        <span>Revisar estoque de cápsulas 500mg</span>
-                    </div>
-                    <div class="quick-card">
-                        <strong>Comunicações</strong>
-                        <span>Reunião equipe - 15h00</span>
-                        <span>Atualização de protocolo sanitário</span>
-                    </div>
-                </div>
-            </section>
+            <div class="biosys-stage">
+                <img src="assets/biovetfarma-logo.svg" alt="BioSys" />
+                <h1>BioSys</h1>
+                <p>Selecione um módulo ou utilize o menu superior para navegar pelo ecossistema da BiovetFarma.</p>
+            </div>
         </main>
     </div>
 

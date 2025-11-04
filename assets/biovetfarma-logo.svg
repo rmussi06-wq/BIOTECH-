@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="crossGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#29c0c6" />
+      <stop offset="100%" stop-color="#0f8f95" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" rx="40" fill="#050607" />
+  <path fill="url(#crossGradient)" d="M172 60h56a12 12 0 0 1 12 12v68h68a12 12 0 0 1 12 12v56a12 12 0 0 1-12 12h-68v68a12 12 0 0 1-12 12h-56a12 12 0 0 1-12-12v-68h-68a12 12 0 0 1-12-12v-56a12 12 0 0 1 12-12h68v-68a12 12 0 0 1 12-12z" />
+  <g transform="translate(0,-6)">
+    <path fill="#7bd388" d="M206 106c-18 0-32 12.5-32 32v60c0 19.2 12.8 32 32 32s32-12.8 32-32v-60c0-19.5-14-32-32-32z" />
+    <path fill="#7bd388" d="M170 138l-14-18a6 6 0 0 0-10 4v42h24z" />
+    <path fill="#7bd388" d="M242 138l14-18a6 6 0 0 1 10 4v42h-24z" />
+    <circle cx="188" cy="156" r="6" fill="#0f585b" />
+    <circle cx="224" cy="156" r="6" fill="#0f585b" />
+    <path fill="#0f585b" d="M194 182c5 5 13 8 18 8s13-3 18-8" stroke="#0f585b" stroke-width="2" stroke-linecap="round" />
+    <path fill="#7bd388" d="M194 108l-6-18a6 6 0 0 0-11 1l-4 18z" />
+    <path fill="#7bd388" d="M218 108l6-18a6 6 0 0 1 11 1l4 18z" />
+  </g>
+  <g transform="translate(-12,70)">
+    <path fill="#33b2ba" d="M160 198c0-28.2 17.8-48 48-48h64c26 0 40 14 40 40v64c0 26-14 40-40 40h-40c-40 0-72-32-72-72z" />
+    <rect x="220" y="190" width="72" height="80" rx="32" fill="#1a7175" />
+    <path fill="#050607" d="M228 238h12a8 8 0 0 1 0 16h-12z" opacity="0.2" />
+    <circle cx="244" cy="232" r="8" fill="#d8f8f9" />
+    <path fill="#050607" d="M192 224c0-10.6 6.4-16 16-16s16 5.4 16 16-6.4 16-16 16-16-5.4-16-16z" opacity="0.35" />
+    <path fill="#7bd388" d="M184 208h20a12 12 0 0 1 12 12v12h-16c-9.6 0-16-6.4-16-16z" />
+  </g>
+  <text x="200" y="336" text-anchor="middle" font-size="32" font-weight="700" fill="#d8f8f9" letter-spacing="4">BIOVETFARMA</text>
+  <text x="200" y="366" text-anchor="middle" font-size="16" fill="#56d9df" letter-spacing="4">MANIPULAÇÃO VETERINÁRIA</text>
+</svg>
