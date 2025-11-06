@@ -197,6 +197,293 @@
             box-shadow: 0 16px 26px -22px rgba(26, 113, 117, 0.6);
         }
 
+        /* ---------- Modal Orçamento ---------- */
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 900;
+        }
+
+        .modal:not(.hidden) {
+            display: flex;
+        }
+
+        .modal.hidden {
+            display: none;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(13, 15, 16, 0.48);
+        }
+
+        .modal-window {
+            position: relative;
+            background: #f8fbf7;
+            border-radius: 18px;
+            box-shadow: 0 30px 80px -40px rgba(13, 15, 16, 0.9);
+            max-width: 1100px;
+            width: calc(100vw - 6rem);
+            max-height: calc(100vh - 4rem);
+            overflow: hidden auto;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(26, 113, 117, 0.18);
+        }
+
+        .modal-header {
+            background: linear-gradient(145deg, rgba(59, 200, 208, 0.08), rgba(132, 193, 101, 0.08));
+            padding: 1.8rem 2.4rem 1.6rem;
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .modal-title h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--pantone-secondary);
+            margin-top: 0.35rem;
+        }
+
+        .modal-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.1rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 0.35rem 0.85rem;
+            border-radius: 999px;
+        }
+
+        .modal-status.concluido {
+            background: rgba(132, 193, 101, 0.18);
+            color: var(--pantone-secondary);
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .modal-meta strong {
+            color: var(--text-muted);
+            display: block;
+            font-weight: 600;
+            letter-spacing: 0.08rem;
+        }
+
+        .modal-meta span {
+            font-weight: 700;
+        }
+
+        .modal-close {
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--pantone-secondary);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--pantone-primary);
+            transform: scale(1.05);
+        }
+
+        .orcamento-contexto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.6rem;
+            padding: 1.6rem 2.4rem;
+            background: #fff;
+        }
+
+        .orcamento-contexto article {
+            background: rgba(59, 200, 208, 0.06);
+            border: 1px solid rgba(26, 113, 117, 0.12);
+            border-radius: 14px;
+            padding: 1.2rem 1.4rem;
+        }
+
+        .orcamento-contexto h3,
+        .orcamento-formula h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--pantone-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .context-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .context-grid .label {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.08rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .context-grid .value {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .orcamento-formula {
+            padding: 1.6rem 2.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            background: rgba(59, 200, 208, 0.04);
+            border-top: 1px solid rgba(26, 113, 117, 0.1);
+            border-bottom: 1px solid rgba(26, 113, 117, 0.1);
+        }
+
+        .orcamento-formula header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .orcamento-formula header button {
+            background: var(--pantone-secondary);
+            color: #fff;
+            border: none;
+            padding: 0.55rem 1.4rem;
+            border-radius: 999px;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 0.04rem;
+        }
+
+        .formula-table {
+            display: grid;
+            gap: 0.4rem;
+        }
+
+        .formula-row {
+            display: grid;
+            grid-template-columns: 0.6fr 2fr 1fr 1fr 1.2fr 1fr 1.2fr 1fr;
+            gap: 0.8rem;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid rgba(26, 113, 117, 0.08);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .formula-row.head {
+            background: rgba(26, 113, 117, 0.08);
+            font-weight: 700;
+        }
+
+        .formula-footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .formula-footer .label {
+            display: block;
+            font-size: 0.7rem;
+            letter-spacing: 0.08rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .formula-footer .value {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .formula-footer .destaque {
+            color: var(--pantone-secondary);
+            font-size: 1.2rem;
+        }
+
+        .orcamento-acoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            padding: 1.6rem 2.4rem 2.4rem;
+            background: #fff;
+        }
+
+        .orcamento-acoes .acao {
+            border: 1px solid rgba(26, 113, 117, 0.18);
+            background: transparent;
+            color: var(--pantone-secondary);
+            font-weight: 600;
+            letter-spacing: 0.04rem;
+            padding: 0.65rem 1.6rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .orcamento-acoes .acao:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px -24px rgba(26, 113, 117, 0.6);
+            background: rgba(59, 200, 208, 0.08);
+        }
+
+        .orcamento-acoes .acao.primario {
+            background: var(--pantone-primary);
+            color: #0d0f10;
+            border-color: transparent;
+        }
+
+        @media (max-width: 1024px) {
+            .modal-window {
+                width: calc(100vw - 3rem);
+            }
+
+            .formula-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                row-gap: 0.4rem;
+            }
+
+            .formula-row span {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .modal-header {
+                grid-template-columns: 1fr;
+                justify-items: flex-start;
+            }
+
+            .modal-meta {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .orcamento-acoes {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .orcamento-acoes .acao {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
         /* ---------- Atendimento App ---------- */
         .app-shell {
             background: #fff;
@@ -581,7 +868,7 @@
                 <div class="menu-group">
                     <button class="menu-trigger" type="button">Movimento</button>
                     <ul class="menu-dropdown">
-                        <li><a href="#"><span class="icon">AT</span>Atendimentos</a></li>
+                        <li><a href="#" data-open-modal="orcamentoModal"><span class="icon">AT</span>Atendimentos</a></li>
                         <li><a href="#"><span class="icon">PV</span>Pedidos de Venda</a></li>
                         <li><a href="#"><span class="icon">CR</span>Contas a Receber</a></li>
                         <li><a href="#"><span class="icon">CP</span>Contas a Pagar</a></li>
@@ -614,6 +901,135 @@
         </main>
     </div>
 
+    <div class="modal hidden" id="orcamentoModal" role="dialog" aria-modal="true" aria-labelledby="orcamentoTitle">
+        <div class="modal-backdrop" data-close-modal></div>
+        <div class="modal-window">
+            <header class="modal-header">
+                <div class="modal-title">
+                    <span class="modal-status concluido">Atendimento Concluído</span>
+                    <h2 id="orcamentoTitle">Atendimento de Receita • Receita</h2>
+                </div>
+                <div class="modal-meta">
+                    <div>
+                        <strong>Ficha</strong>
+                        <span>161 • Biosys</span>
+                    </div>
+                    <div>
+                        <strong>Data</strong>
+                        <span>22/04/2024 10:45</span>
+                    </div>
+                    <div>
+                        <strong>Operador</strong>
+                        <span>Usuário 01</span>
+                    </div>
+                </div>
+                <button class="modal-close" type="button" data-close-modal aria-label="Fechar orçamento">×</button>
+            </header>
+            <section class="orcamento-contexto">
+                <article>
+                    <h3>Dados do Atendimento</h3>
+                    <div class="context-grid">
+                        <div>
+                            <span class="label">Cliente</span>
+                            <span class="value">CAPSULAS FARMÁCIA DE MANIPULAÇÃO</span>
+                        </div>
+                        <div>
+                            <span class="label">Animal/Paciente</span>
+                            <span class="value">N/A</span>
+                        </div>
+                        <div>
+                            <span class="label">Médico Veterinário</span>
+                            <span class="value">DR. ALMEIDA</span>
+                        </div>
+                        <div>
+                            <span class="label">Status</span>
+                            <span class="value">Concluído</span>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <h3>Receita</h3>
+                    <div class="context-grid">
+                        <div>
+                            <span class="label">Tipo de Fórmula</span>
+                            <span class="value">Manipulado • Cápsulas</span>
+                        </div>
+                        <div>
+                            <span class="label">Qtd. Fórmulas</span>
+                            <span class="value">1</span>
+                        </div>
+                        <div>
+                            <span class="label">Qtd. Cápsulas</span>
+                            <span class="value">60</span>
+                        </div>
+                        <div>
+                            <span class="label">Entrega</span>
+                            <span class="value">25/04/2024 às 18h</span>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <section class="orcamento-formula">
+                <header>
+                    <h3>Composição da Fórmula</h3>
+                    <button type="button">Calcular</button>
+                </header>
+                <div class="formula-table">
+                    <div class="formula-row head">
+                        <span>Item</span>
+                        <span>Substância</span>
+                        <span>Referência</span>
+                        <span>Forma</span>
+                        <span>Concentração</span>
+                        <span>Quantidade</span>
+                        <span>Processo</span>
+                        <span>Preço</span>
+                    </div>
+                    <div class="formula-row">
+                        <span>1</span>
+                        <span>AMITRIPTILINA</span>
+                        <span>00001</span>
+                        <span>Cápsula</span>
+                        <span>25 mg</span>
+                        <span>60</span>
+                        <span>Padrão</span>
+                        <span>R$ 52,90</span>
+                    </div>
+                    <div class="formula-row">
+                        <span>2</span>
+                        <span>EXCIPIENTE Q.S.P.</span>
+                        <span>00008</span>
+                        <span>Cápsula</span>
+                        <span>60 mg</span>
+                        <span>60</span>
+                        <span>Padrão</span>
+                        <span>—</span>
+                    </div>
+                </div>
+                <footer class="formula-footer">
+                    <div>
+                        <span class="label">Valor Total</span>
+                        <span class="value destaque">R$ 112,90</span>
+                    </div>
+                    <div>
+                        <span class="label">Forma de Pagamento</span>
+                        <span class="value">Venda no Convênio</span>
+                    </div>
+                    <div>
+                        <span class="label">Origem</span>
+                        <span class="value">Atendimento Presencial</span>
+                    </div>
+                </footer>
+            </section>
+            <section class="orcamento-acoes">
+                <button type="button" class="acao primario">Registrar pagamento</button>
+                <button type="button" class="acao">Imprimir orçamento</button>
+                <button type="button" class="acao">Duplicar fórmula</button>
+                <button type="button" class="acao" data-close-modal>Fechar</button>
+            </section>
+        </div>
+    </div>
+
     <script>
         (function () {
             const session = JSON.parse(localStorage.getItem('biovetSession') || 'null');
@@ -632,6 +1048,8 @@
             const launchButtons = document.querySelectorAll('[data-launch="atendimentoApp"]');
             const returnDesktop = document.getElementById('returnDesktop');
             const logoutButtons = document.querySelectorAll('[data-action="logout"]');
+            const modalTriggers = document.querySelectorAll('[data-open-modal]');
+            const modalClosers = document.querySelectorAll('[data-close-modal]');
 
             launchButtons.forEach(button => {
                 button.addEventListener('click', () => {
@@ -654,6 +1072,35 @@
                     localStorage.removeItem('biovetSession');
                     window.location.href = 'login.html';
                 });
+            });
+
+            modalTriggers.forEach(trigger => {
+                const targetId = trigger.getAttribute('data-open-modal');
+                trigger.addEventListener('click', event => {
+                    event.preventDefault();
+                    const targetModal = document.getElementById(targetId);
+                    if (targetModal) {
+                        targetModal.classList.remove('hidden');
+                    }
+                });
+            });
+
+            modalClosers.forEach(closer => {
+                closer.addEventListener('click', () => {
+                    const relatedModal = closer.closest('.modal') || document.getElementById('orcamentoModal');
+                    if (relatedModal) {
+                        relatedModal.classList.add('hidden');
+                    }
+                });
+            });
+
+            document.addEventListener('keydown', event => {
+                if (event.key === 'Escape') {
+                    const openedModal = document.querySelector('.modal:not(.hidden)');
+                    if (openedModal) {
+                        openedModal.classList.add('hidden');
+                    }
+                }
             });
         })();
     </script>
